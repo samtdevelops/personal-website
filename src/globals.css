@@ -1,1 +1,29 @@
 @import "tailwindcss";
+
+@theme {
+  --color-primary: #0a0a0a;
+  --color-secondary: #525252;
+  --color-tertiary: #a3a3a3;
+  --color-accent: #ff4400;
+}
+
+/*
+  Spacing convention — only use these values for padding/margin/gap:
+
+  tailwind-3  = 0.75rem = 12px   (small)
+  tailwind-6  = 1.5rem  = 24px   (medium)
+  tailwind-12 = 3rem    = 48px   (large)
+  tailwind-24 = 6rem    = 96px   (xl)
+
+  For height/width of decorative elements, use the same scale.
+*/
+
+body {
+  color: var(--color-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a:hover {
+  color: var(--color-accent);
+}

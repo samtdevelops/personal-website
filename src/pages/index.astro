@@ -1,15 +1,50 @@
 ---
-
+import "../globals.css";
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Sam Thomas | Software Engineer</title>
-	</head>
-	<body>
-		<h1>Hello, World!</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Sam Thomas</title>
+  </head>
+  <body>
+    <main class="max-w-3xl mx-auto px-6 pt-24 pb-12">
+      <h1 class="text-5xl sm:text-7xl font-black tracking-tighter leading-none">
+        SAM<br />THOMAS
+      </h1>
+      <p class="mt-3 tracking-wide text-secondary">
+        software engineer (& wannabe athlete)
+      </p>
+
+      <div class="w-12 h-1 mt-12 mb-12 bg-accent" />
+
+      <p class="max-w-md text-secondary">
+        I write about two things from first principles. Technical concepts as a software engineer, and all things hypertrophy, nutrition and fitness. Read whichever you like.
+      </p>
+
+      <nav class="mt-24">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-tertiary">
+          Writing
+        </p>
+        <div class="mt-3 space-y-3">
+          <a href="/writing/engineering" class="block text-xl sm:text-2xl font-bold">
+            Engineering
+          </a>
+          <a href="/writing/health-fitness" class="block text-xl sm:text-2xl font-bold">
+            Health &amp; Fitness
+          </a>
+        </div>
+
+        <div class="mt-12 pt-6 border-t border-tertiary/30">
+          <div class="flex flex-wrap gap-x-6 gap-y-3">
+            <a href="/uses" class="text-sm font-semibold uppercase tracking-[0.15em] text-secondary">Uses</a>
+            <a href="/projects" class="text-sm font-semibold uppercase tracking-[0.15em] text-secondary">Projects</a>
+            <a href="/contact" class="text-sm font-semibold uppercase tracking-[0.15em] text-secondary">Contact</a>
+          </div>
+        </div>
+      </nav>
+    </main>
+  </body>
 </html>
