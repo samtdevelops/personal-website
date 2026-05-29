@@ -8,14 +8,12 @@
 }
 
 /*
-  Spacing convention — only use these values for padding/margin/gap:
+  Spacing convention — only use these values throughout:
 
   tailwind-3  = 0.75rem = 12px   (small)
   tailwind-6  = 1.5rem  = 24px   (medium)
   tailwind-12 = 3rem    = 48px   (large)
   tailwind-24 = 6rem    = 96px   (xl)
-
-  For height/width of decorative elements, use the same scale.
 */
 
 body {
@@ -26,4 +24,32 @@ body {
 
 a:hover {
   color: var(--color-accent);
+}
+
+@utility title {
+  @apply text-5xl sm:text-7xl font-bold tracking-tighter leading-none;
+}
+
+@utility subtitle {
+  @apply tracking-wider text-secondary;
+}
+
+@utility label {
+  @apply text-xs font-semibold uppercase tracking-widest text-tertiary;
+}
+
+@utility big-link {
+  @apply text-xl sm:text-2xl font-bold;
+}
+
+@utility nav-link {
+  @apply text-xs font-semibold uppercase tracking-widest text-secondary;
+}
+
+@utility heading {
+  @apply text-4xl sm:text-5xl font-bold tracking-tighter leading-none;
+}
+
+@utility accent {
+  @apply text-accent;
 }
