@@ -1,0 +1,75 @@
+---
+import { getCollection } from "astro:content";
+import ContentLayout from "../../layouts/ContentLayout.astro";
+
+const posts = await getCollection("writing");
+posts.sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
+---
+
+<ContentLayout title="Writing" heading="Writing">
+  <p class="subtitle mt-3">
+    I write about two things from first principles. Technical concepts as a
+    software engineer, and all things hypertrophy, nutrition and fitness. Read
+    whichever you like.
+  </p>
+
+  <style is:inline>
+    #filter-all:checked ~ #posts article { display: block; }
+    #filter-software-engineering:checked ~ #posts article[data-category="health-and-fitness"] { display: none; }
+    #filter-health-and-fitness:checked ~ #posts article[data-category="software-engineering"] { display: none; }
+
+    #filter-all:checked ~ #filters label[for="filter-all"],
+    #filter-software-engineering:checked ~ #filters label[for="filter-software-engineering"],
+    #filter-health-and-fitness:checked ~ #filters label[for="filter-health-and-fitness"] {
+      color: var(--color-accent);
+    }
+  </style>
+
+  <input type="radio" name="filter" id="filter-all" checked class="sr-only" />
+  <input type="radio" name="filter" id="filter-software-engineering" class="sr-only" />
+  <input type="radio" name="filter" id="filter-health-and-fitness" class="sr-only" />
+
+  <div id="filters" class="flex gap-3 mt-12">
+    <label for="filter-all" class="label cursor-pointer transition-colors">All</label>
+    <label for="filter-software-engineering" class="label cursor-pointer transition-colors">Software Engineering</label>
+    <label for="filter-health-and-fitness" class="label cursor-pointer transition-colors">Health & Fitness</label>
+  </div>
+
+  <div id="posts" class="mt-12 space-y-6">
+    {
+      posts.map((post) => (
+        <article data-category={post.data.category}>
+          <h2 class="post-title">
+            <a href={`/writing/${post.id}`}>
+              {post.data.title}
+            </a>
+          </h2>
+
+          <div class="flex gap-3 mt-3">
+            <span
+              class="label text-accent"
+            >
+              {post.data.category === "software-engineering" ? "Software Engineering" : "Health & Fitness"}
+            </span>
+            <time
+              datetime={post.data.publishDate.toISOString()}
+              class="meta"
+            >
+              {post.data.publishDate.toLocaleDateString("en-GB", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              })}
+            </time>
+          </div>
+
+          {post.data.excerpt && (
+            <p class="mt-3">
+              {post.data.excerpt}
+            </p>
+          )}
+        </article>
+      ))
+    }
+  </div>
+</ContentLayout>

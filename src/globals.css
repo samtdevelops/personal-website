@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @theme {
   --color-primary: #0a0a0a;
@@ -10,10 +11,11 @@
 /*
   Spacing convention — only use these values throughout:
 
-  tailwind-3  = 0.75rem = 12px   (small)
-  tailwind-6  = 1.5rem  = 24px   (medium)
-  tailwind-12 = 3rem    = 48px   (large)
-  tailwind-24 = 6rem    = 96px   (xl)
+  tailwind-1  = 0.25rem   (xs)
+  tailwind-3  = 0.75rem   (small)
+  tailwind-6  = 1.5rem    (medium)
+  tailwind-12 = 3rem      (large)
+  tailwind-24 = 6rem      (xl)
 */
 
 body {
@@ -26,7 +28,7 @@ a:hover {
   color: var(--color-accent);
 }
 
-@utility title {
+@utility hero {
   @apply text-5xl sm:text-7xl font-bold tracking-tighter leading-none;
 }
 
@@ -38,18 +40,19 @@ a:hover {
   @apply text-xs font-semibold uppercase tracking-widest text-tertiary;
 }
 
-@utility big-link {
-  @apply text-xl sm:text-2xl font-bold;
+@utility meta {
+  @apply text-xs text-tertiary;
 }
 
 @utility nav-link {
   @apply text-xs font-semibold uppercase tracking-widest text-secondary;
 }
 
+@utility post-title {
+  @apply text-xl sm:text-2xl font-bold tracking-tighter leading-none;
+}
+
 @utility heading {
   @apply text-4xl sm:text-5xl font-bold tracking-tighter leading-none;
 }
 
-@utility accent {
-  @apply text-accent;
-}

@@ -1,0 +1,38 @@
+---
+import { getCollection, getEntry, render } from "astro:content";
+import ContentLayout from "../../layouts/ContentLayout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("writing");
+  return posts.map((post) => ({
+    params: { slug: post.id },
+  }));
+}
+
+const { slug } = Astro.params;
+const post = await getEntry("writing", slug);
+const { Content } = await render(post);
+const { data } = post;
+---
+
+<ContentLayout title={data.title} heading={data.title}>
+  <div class="flex gap-3 mt-3">
+    <span class="label text-accent">
+      {data.category === "software-engineering"
+        ? "Software Engineering"
+        : "Health & Fitness"}
+    </span>
+
+    <time datetime={data.publishDate.toISOString()} class="meta">
+      {data.publishDate.toLocaleDateString("en-GB", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      })}
+    </time>
+  </div>
+
+  <article class="mt-6 prose">
+    <Content />
+  </article>
+</ContentLayout>
