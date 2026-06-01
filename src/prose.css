@@ -1,2 +1,15 @@
 @import 'tailwindcss';
 @plugin "@tailwindcss/typography";
+
+.prose {
+  color: var(--color-primary);
+}
+
+.prose em {
+  color: var(--color-accent);
+}
+
+.prose pre {
+  @apply border-3;
+  border-color: var(--color-accent);
+}
