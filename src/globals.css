@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@plugin "@tailwindcss/typography";
 
 @theme {
   --color-primary: #0a0a0a;
@@ -48,6 +47,10 @@ a:hover {
   @apply text-xs font-semibold uppercase tracking-widest text-secondary;
 }
 
+.nav-link[aria-current="page"] {
+  color: var(--color-accent);
+}
+
 @utility post-title {
   @apply text-xl sm:text-2xl font-bold tracking-tighter leading-none;
 }
@@ -56,3 +59,6 @@ a:hover {
   @apply text-4xl sm:text-5xl font-bold tracking-tighter leading-none;
 }
 
+@utility accent-bar {
+  @apply w-12 h-1 bg-accent;
+}

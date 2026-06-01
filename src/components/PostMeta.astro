@@ -1,0 +1,18 @@
+---
+import { categoryLabel, formatDate } from "../lib/writing";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  category: CollectionEntry<"writing">["data"]["category"];
+  publishDate: Date;
+}
+
+const { category, publishDate } = Astro.props;
+---
+
+<div class="flex gap-3 mt-3">
+  <span class="label text-accent">{categoryLabel(category)}</span>
+  <time datetime={publishDate.toISOString()} class="meta">
+    {formatDate(publishDate)}
+  </time>
+</div>

@@ -1,0 +1,46 @@
+---
+interface LinkItem {
+  label: string;
+  text: string;
+  href: string;
+  external?: boolean;
+}
+
+interface Props {
+  title: string;
+  items: string[] | LinkItem[];
+}
+
+const { title, items } = Astro.props;
+
+function isLinkItem(item: string | LinkItem): item is LinkItem {
+  return typeof item !== "string";
+}
+---
+
+<section class="mt-12">
+  <h2 class="label">{title}</h2>
+  <ul class="mt-3 space-y-3">
+    {
+      items.map((item) => (
+        <li>
+          {isLinkItem(item) ? (
+            <>
+              {item.label} -{" "}
+              <a
+                href={item.href}
+                {...(item.external
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
+              >
+                {item.text}
+              </a>
+            </>
+          ) : (
+            item
+          )}
+        </li>
+      ))
+    }
+  </ul>
+</section>

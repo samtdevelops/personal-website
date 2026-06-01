@@ -1,13 +1,39 @@
 ---
+const currentPath = Astro.url.pathname;
 
+const navItems = [
+  { href: "/", label: "Home", isActive: currentPath === "/" },
+  {
+    href: "/writing",
+    label: "Writing",
+    isActive: currentPath.startsWith("/writing"),
+  },
+  { href: "/uses", label: "Uses", isActive: currentPath.startsWith("/uses") },
+  {
+    href: "/projects",
+    label: "Projects",
+    isActive: currentPath.startsWith("/projects"),
+  },
+  {
+    href: "/contact",
+    label: "Contact",
+    isActive: currentPath.startsWith("/contact"),
+  },
+];
 ---
 
 <header class="flex justify-end">
-  <nav class="flex flex-wrap gap-x-6">
-    <a href="/" class="nav-link">Home</a>
-    <a href="/writing" class="nav-link">Writing</a>
-    <a href="/uses" class="nav-link">Uses</a>
-    <a href="/projects" class="nav-link">Projects</a>
-    <a href="/contact" class="nav-link">Contact</a>
+  <nav class="flex flex-wrap gap-x-6" aria-label="Main">
+    {
+      navItems.map(({ href, label, isActive }) => (
+        <a
+          href={href}
+          class="nav-link"
+          aria-current={isActive ? "page" : undefined}
+        >
+          {label}
+        </a>
+      ))
+    }
   </nav>
 </header>

@@ -1,15 +1,11 @@
 ---
 import ContentLayout from "../../layouts/ContentLayout.astro";
+import ContentSection from "../../components/ContentSection.astro";
+import { usesSections } from "../../data/uses";
 ---
 
 <ContentLayout heading="Uses">
-  <section class="mt-12">
-    <h2 class="label">Hardware</h2>
-    <ul class="mt-3 space-y-3">
-      <li>MacBook Pro 2016</li>
-      <li>Logitech MX Keys Mini</li>
-      <li>Logitech MX Master</li>
-      <li>Sony XM5</li>
-    </ul>
-  </section>
+  {usesSections.map((section) => (
+    <ContentSection title={section.title} items={section.items} />
+  ))}
 </ContentLayout>

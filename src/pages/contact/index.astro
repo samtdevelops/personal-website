@@ -1,14 +1,9 @@
 ---
 import ContentLayout from "../../layouts/ContentLayout.astro";
+import ContentSection from "../../components/ContentSection.astro";
+import { contactLinks } from "../../data/contact";
 ---
 
 <ContentLayout heading="Contact">
-  <section class="mt-12">
-    <h2 class="label">Links</h2>
-    <ul class="mt-3 space-y-3">
-      <li>Email - <a href="mailto:hello@samthomas.dev">hello@samthomas.dev</a></li>
-      <li>GitHub - <a href="https://github.com/samtdevelops" target="_blank" rel="noopener">@samtdevelops</a></li>
-      <li>LinkedIn - <a href="https://linkedin.com/in/samtdev" target="_blank" rel="noopener"">@samtdev</a></li>
-    </ul>
-  </section>
+  <ContentSection title="Links" items={contactLinks} />
 </ContentLayout>

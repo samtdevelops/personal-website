@@ -1,0 +1,62 @@
+---
+---
+
+<style is:inline>
+  #filter-all:checked 
+    ~ #posts article {
+    display: block;
+  }
+  #filter-software-engineering:checked
+    ~ #posts
+    article[data-category="health-and-fitness"] {
+    display: none;
+  }
+  #filter-health-and-fitness:checked
+    ~ #posts
+    article[data-category="software-engineering"] {
+    display: none;
+  }
+
+  #filter-all:checked ~ #filters label[for="filter-all"],
+  #filter-software-engineering:checked
+    ~ #filters
+    label[for="filter-software-engineering"],
+  #filter-health-and-fitness:checked
+    ~ #filters
+    label[for="filter-health-and-fitness"] {
+    color: var(--color-accent);
+  }
+</style>
+
+<input type="radio" name="filter" id="filter-all" checked class="sr-only" />
+<input
+  type="radio"
+  name="filter"
+  id="filter-software-engineering"
+  class="sr-only"
+/>
+<input
+  type="radio"
+  name="filter"
+  id="filter-health-and-fitness"
+  class="sr-only"
+/>
+
+<fieldset id="filters" class="flex gap-3 mt-12">
+  <legend class="sr-only">Filter by category</legend>
+  <label for="filter-all" class="label cursor-pointer transition-colors"
+    >All</label
+  >
+  <label
+    for="filter-software-engineering"
+    class="label cursor-pointer transition-colors">Software Engineering</label
+  >
+  <label
+    for="filter-health-and-fitness"
+    class="label cursor-pointer transition-colors">Health & Fitness</label
+  >
+</fieldset>
+
+<div id="posts" class="mt-12 space-y-6">
+  <slot />
+</div>
