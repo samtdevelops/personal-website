@@ -1,8 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { PAGE_DESCRIPTIONS } from "../data/site";
 ---
 
-<BaseLayout>
+<BaseLayout description={PAGE_DESCRIPTIONS.home}>
   <div class="flex-1 flex flex-col justify-center">
     <h1 class="hero">
       Sam<br />Thomas

@@ -1,4 +1,12 @@
-import type { CollectionEntry } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+export async function getWritingPosts() {
+  const posts = await getCollection("writing");
+  posts.sort(
+    (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
+  );
+  return posts;
+}
 
 type Category = CollectionEntry<"writing">["data"]["category"];
 

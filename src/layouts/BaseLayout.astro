@@ -1,12 +1,26 @@
 ---
 import "../globals.css";
 import Header from "../components/Header.astro";
+import SEO from "../components/SEO.astro";
 
 export interface Props {
   title?: string;
+  description: string;
+  image?: string;
+  type?: "website" | "article";
+  noindex?: boolean;
+  publishedTime?: Date;
 }
 
-const { title = "Sam Thomas" } = Astro.props;
+const {
+  title = "Sam Thomas",
+  description,
+  image,
+  type,
+  noindex,
+  publishedTime,
+} = Astro.props;
+
 const pageTitle = title === "Sam Thomas" ? title : `${title} - Sam Thomas`;
 ---
 
@@ -16,6 +30,14 @@ const pageTitle = title === "Sam Thomas" ? title : `${title} - Sam Thomas`;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
+    <SEO
+      title={title}
+      description={description}
+      image={image}
+      type={type}
+      noindex={noindex}
+      publishedTime={publishedTime}
+    />
   </head>
   <body>
     <div class="min-h-screen max-w-5xl mx-auto px-6 py-12 flex flex-col">

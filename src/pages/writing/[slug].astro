@@ -17,7 +17,14 @@ const { Content } = await render(post);
 const { data } = post;
 ---
 
-<ContentLayout title={data.title} heading={data.title} width="3xl">
+<ContentLayout
+  title={data.title}
+  heading={data.title}
+  width="3xl"
+  description={data.excerpt}
+  type="article"
+  publishedTime={data.publishDate}
+>
   <PostMeta category={data.category} publishDate={data.publishDate} />
 
   <div class="accent-bar my-6" aria-hidden="true"></div>

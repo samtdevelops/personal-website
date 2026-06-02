@@ -1,0 +1,121 @@
+---
+import { SITE } from "../data/site";
+
+export interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  type?: "website" | "article";
+  noindex?: boolean;
+  publishedTime?: Date;
+}
+
+const {
+  title,
+  description,
+  image = SITE.defaultOgImage,
+  type = "website",
+  noindex = false,
+  publishedTime,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(image, Astro.site);
+const isHome = Astro.url.pathname === "/";
+
+const schemas: Record<string, unknown>[] = [];
+
+if (isHome) {
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE.name,
+    url: SITE.url,
+    description: SITE.description,
+  });
+
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: SITE.author,
+    url: SITE.url,
+    email: SITE.email,
+    sameAs: [SITE.social.github, SITE.social.linkedin],
+  });
+}
+
+if (type === "article" && publishedTime) {
+  schemas.push({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: title,
+    description,
+    datePublished: publishedTime.toISOString(),
+    author: {
+      "@type": "Person",
+      name: SITE.author,
+      url: SITE.url,
+    },
+    publisher: {
+      "@type": "Person",
+      name: SITE.author,
+      url: SITE.url,
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": canonical.href,
+    },
+    image: ogImage.href,
+  });
+}
+---
+
+<meta name="description" content={description} />
+{noindex && <meta name="robots" content="noindex" />}
+<link rel="canonical" href={canonical} />
+
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content={SITE.name} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:locale" content="en_GB" />
+{
+  type === "article" && publishedTime && (
+    <meta
+      property="article:published_time"
+      content={publishedTime.toISOString()}
+    />
+  )
+}
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title={SITE.name}
+  href="/rss.xml"
+/>
+
+{
+  isHome && (
+    <>
+      <link rel="me" href={SITE.social.github} />
+      <link rel="me" href={SITE.social.linkedin} />
+    </>
+  )
+}
+
+{
+  schemas.map((schema) => (
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  ))
+}

@@ -5,14 +5,36 @@ export interface Props {
   title?: string;
   heading?: string;
   width?: "xl" | "3xl";
+  description: string;
+  image?: string;
+  type?: "website" | "article";
+  noindex?: boolean;
+  publishedTime?: Date;
 }
 
-const { title, heading, width = "xl" } = Astro.props;
+const {
+  title,
+  heading,
+  width = "xl",
+  description,
+  image,
+  type,
+  noindex,
+  publishedTime,
+} = Astro.props;
+
 const pageTitle = title ?? heading;
 const contentWidth = width === "3xl" ? "max-w-3xl" : "max-w-xl";
 ---
 
-<BaseLayout title={pageTitle}>
+<BaseLayout
+  title={pageTitle}
+  description={description}
+  image={image}
+  type={type}
+  noindex={noindex}
+  publishedTime={publishedTime}
+>
   <div class="flex-1 pt-24">
     <div class={contentWidth}>
       {heading && <h1 class="heading">{heading}</h1>}

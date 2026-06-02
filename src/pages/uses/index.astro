@@ -2,9 +2,10 @@
 import ContentLayout from "../../layouts/ContentLayout.astro";
 import ContentSection from "../../components/ContentSection.astro";
 import { usesSections } from "../../data/uses";
+import { PAGE_DESCRIPTIONS } from "../../data/site";
 ---
 
-<ContentLayout heading="Uses">
+<ContentLayout heading="Uses" description={PAGE_DESCRIPTIONS.uses}>
   {usesSections.map((section) => (
     <ContentSection title={section.title} items={section.items} />
   ))}

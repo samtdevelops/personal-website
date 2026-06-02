@@ -1,16 +1,18 @@
 ---
-import { getCollection } from "astro:content";
+import { getWritingPosts } from "../../lib/writing";
 import ContentLayout from "../../layouts/ContentLayout.astro";
 import WritingFilter from "../../components/WritingFilter.astro";
 import PostMeta from "../../components/PostMeta.astro";
+import { PAGE_DESCRIPTIONS } from "../../data/site";
 
-const posts = await getCollection("writing");
-posts.sort(
-  (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
-);
+const posts = await getWritingPosts();
 ---
 
-<ContentLayout title="Writing" heading="Writing">
+<ContentLayout
+  title="Writing"
+  heading="Writing"
+  description={PAGE_DESCRIPTIONS.writing}
+>
   <p class="subtitle mt-3">
     I write about two things from first principles. Technical concepts as a
     software engineer, and all things hypertrophy, nutrition and fitness. Read
