@@ -59,7 +59,7 @@ Before you `npm install`, do some quick reconnaissance.
 
 For a more in-depth analysis, you can use third-party tools that provide detailed security insights.
 
-- **Snyk Advisor:** This is a fantastic free tool. Simply search for a package on the [Snyk Advisor](https://snyk.io/advisor/) website, and it will give you a comprehensive health score. It provides information on things like security vulnerabilities, maintenance status and community activity.
+- **Snyk Advisor:** This is a fantastic free tool. Simply search for a package on the [Snyk Advisor](https://snyk.io/advisor/) website, and it will give you a comprehensive health score. It provides information on things like security vulnerabilities, maintenance status, and community activity.
 
 ---
 
