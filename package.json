@@ -9,9 +9,29 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepare": "husky"
   },
   "dependencies": {
     "astro": "^7.0.6"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.8",
+    "oxlint": "^1.72.0",
+    "prettier": "3.9.4",
+    "prettier-plugin-astro": "0.14.1"
+  },
+  "lint-staged": {
+    "*.{js,astro}": [
+      "oxlint --fix"
+    ],
+    "*.{astro,js,json,md,css}": [
+      "prettier --write ."
+    ]
   }
 }
