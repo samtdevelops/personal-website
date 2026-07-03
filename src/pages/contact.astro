@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../site.config";
+---
+
+<BaseLayout
+  title="contact"
+  description="ways to connect with sam thomas."
+  heading="contact"
+>
+  <p>feel free to reach out.</p>
+
+  <ul>
+    <li>
+      <a href={`mailto:${site.email}`}>{site.email}</a> - email me directly
+    </li>
+    <li>
+      <a href={site.linkedin}>linkedin</a> - connect with me on linkedin
+    </li>
+  </ul>
+</BaseLayout>

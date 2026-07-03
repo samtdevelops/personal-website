@@ -27,10 +27,10 @@
     "prettier-plugin-astro": "0.14.1"
   },
   "lint-staged": {
-    "*.{js,astro}": [
+    "*.{js,ts,astro}": [
       "oxlint --fix"
     ],
-    "*.{astro,js,json,md,css}": [
+    "*.{astro,js,ts,json,md,css}": [
       "prettier --write ."
     ]
   }

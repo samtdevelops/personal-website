@@ -1,15 +1,22 @@
 ---
-
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../site.config";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Sam Thomas | Software Engineer</title>
-  </head>
-  <body>
-    <h1>Hello, World!</h1>
-  </body>
-</html>
+<BaseLayout
+  title="sam thomas - software engineer"
+  description="sam thomas is a software engineer based in the uk."
+  heading="sam thomas"
+>
+  <p>software engineer based in the uk.</p>
+
+  <ul>
+    <li><a href="/about">about me</a> - the autobiography (short version)</li>
+    <li>
+      <a href="/projects">projects</a> - what i've been working on
+    </li>
+    <li>
+      <a href="/contact">contact</a> - say hello
+    </li>
+  </ul>
+</BaseLayout>

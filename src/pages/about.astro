@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../site.config";
+
+const careerStart = new Date(site.careerStart);
+const daysExperience = Math.floor(
+  (Date.now() - careerStart.getTime()) / (1000 * 60 * 60 * 24),
+);
+---
+
+<BaseLayout title="about" description="about sam thomas." heading="about">
+  <p>
+    i'm welsh, based in bristol, and have been working as a full-stack software
+    engineer for {daysExperience} days.
+  </p>
+  <p>
+    i graduated from the university of bristol with first-class honours in
+    computer science.
+  </p>
+  <p>
+    outside of work, i care about resistance training and nutrition. i follow
+    rugby, football, f1, and mma - and have a working knowledge of lager, cider
+    and rum (spiced).
+  </p>
+</BaseLayout>

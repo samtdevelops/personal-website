@@ -1,0 +1,48 @@
+---
+import { site } from "../site.config";
+import "../globals.css";
+
+interface Props {
+  title: string;
+  description: string;
+  heading: string;
+}
+
+const { title, description, heading } = Astro.props;
+const isHome = Astro.url.pathname === "/";
+const pageTitle = isHome ? title : `${title} | ${site.name}`;
+const canonicalUrl = new URL(Astro.url.pathname, site.url).href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <title>{pageTitle}</title>
+  </head>
+
+  <body>
+    <main>
+      <h1>{heading}</h1>
+      <slot />
+    </main>
+
+    <hr />
+
+    <footer>
+      <p>
+        <small>
+          <a href="/">sam thomas</a> &copy; {new Date().getFullYear()}
+        </small>
+      </p>
+    </footer>
+  </body>
+</html>
