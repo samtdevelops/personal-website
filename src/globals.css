@@ -1,3 +1,7 @@
+:root {
+  color-scheme: light dark;
+}
+
 /* Taken from https://perfectmotherfuckingwebsite.com */
 body {
   max-width: 650px;

@@ -32,7 +32,7 @@
       "oxlint --fix"
     ],
     "*.{astro,js,ts,json,md,css}": [
-      "prettier --write ."
+      "prettier --write"
     ]
   }
 }
