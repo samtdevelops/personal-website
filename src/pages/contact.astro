@@ -4,18 +4,21 @@ import { site } from "../site.config";
 ---
 
 <BaseLayout
-  title="contact"
-  description="ways to connect with sam thomas."
-  heading="contact"
+  title="Contact"
+  description="Ways to get in touch with Sam Thomas."
+  heading="Contact"
 >
-  <p>feel free to reach out.</p>
+  <p>Feel free to reach out.</p>
 
   <ul>
     <li>
       <a href={`mailto:${site.email}`}>{site.email}</a> - email me directly
     </li>
     <li>
-      <a href={site.linkedin}>linkedin</a> - connect with me on linkedin
+      <a href={site.linkedin}>LinkedIn</a> - connect with me on LinkedIn
+    </li>
+    <li>
+      <a href={site.github}>GitHub</a> - check out my code
     </li>
   </ul>
 </BaseLayout>

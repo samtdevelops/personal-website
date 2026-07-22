@@ -1,13 +1,17 @@
 # samthomas.dev
 
-source for [samthomas.dev](https://samthomas.dev) - my personal website.
+Source for [samthomas.dev](https://samthomas.dev) - my personal website.
 
-plain html, almost no css, no client-side js.
+Plain HTML, almost no CSS, and no client-side JavaScript.
 
-## built with
+## Built with
 
-[astro 7](https://astro.build/blog/astro-7/)
+[Astro 7](https://astro.build/blog/astro-7/)
 
-## styled like
+## Styled like
 
-[perfectmotherfuckingwebsite.com](https://perfectmotherfuckingwebsite.com) — system font, 650px max width, dark mode via `prefers-color-scheme`.
+[perfectmotherfuckingwebsite.com](https://perfectmotherfuckingwebsite.com) - system font, 650px max width, dark mode via `prefers-color-scheme`.
+
+## License
+
+Code is [MIT](LICENSE). Site content remains © Sam Thomas.
